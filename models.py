@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
+from sqlalchemy import Column, Date, Integer, String, ForeignKey, create_engine
 from sqlalchemy.orm import relationship, sessionmaker, DeclarativeBase
 from dotenv import load_dotenv
 from typing import Optional
@@ -76,8 +76,8 @@ class Tournament(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(100), nullable=False)
-    start_date = Column(String, nullable=True)  # Using String for simplicity; can be Date if needed
-    end_date = Column(String, nullable=True)    # Using String for simplicity; can be Date if needed
+    start_date = Column(Date, nullable=True)  # Using String for simplicity; can be Date if needed
+    end_date = Column(Date, nullable=True)    # Using String for simplicity; can be Date if needed
     format = Column(String(50), nullable=False)
     status = Column(String(20), nullable=False)
 
