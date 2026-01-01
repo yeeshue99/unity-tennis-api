@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from flask import request
 from flask_cors import CORS
 from models import SessionLocal
@@ -7,6 +9,8 @@ from routes.matchups import matchups_bp
 from routes.brackets import brackets_bp
 from routes.tournament_players import tournament_players_bp
 from apiflask import APIFlask
+
+load_dotenv()
 
 app = APIFlask(__name__)
 
@@ -34,4 +38,5 @@ app.register_blueprint(brackets_bp)
 app.register_blueprint(tournament_players_bp)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    debug_mode = os.getenv("ENVIRONMENT", "prod") == "dev"
+    app.run(debug=debug_mode)
