@@ -39,4 +39,4 @@ app.register_blueprint(tournament_players_bp)
 
 if __name__ == "__main__":
     debug_mode = os.getenv("ENVIRONMENT", "prod") == "dev"
-    app.run(debug=debug_mode)
+    app.run(debug=debug_mode, port=8080)
